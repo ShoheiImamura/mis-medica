@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import { ComparisonListItem, Meta } from 'components/models';
+import { ComparisonListItem } from 'components/models';
 import { defineComponent, ref } from '@vue/composition-api';
 
 export default defineComponent({
@@ -72,9 +72,6 @@ export default defineComponent({
         expectationMessage: '期待するメッセージ'
       }
     ]);
-    // const meta = ref<Meta>({
-    //   totalCount: 1200
-    // });
     return { comparisonListItems };
   }
 });
