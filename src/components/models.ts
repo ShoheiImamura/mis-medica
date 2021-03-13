@@ -4,6 +4,25 @@ export interface ComparisonListItem {
   expectationMessage: string;
 }
 
+export interface Comparison {
+  id: number;
+  subject: string;
+  citationUrl: string;
+  expectations: Expectation[];
+  actualities: Actuality[];
+}
+
+export interface Expectation {
+  id: number;
+  message: string;
+}
+export interface Actuality {
+  id: number;
+  message: string;
+  detail: string;
+  evidenceUrl: string;
+}
+
 export interface Todo {
   id: number;
   content: string;
