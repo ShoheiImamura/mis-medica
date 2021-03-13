@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.ts,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "build:github": "quasar build && rm -rf ./docs/ && mv ./dist ./docs"
+    "build:github": "rm -rf ./docs/ && quasar build && mv ./dist/spa/ ./docs"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
