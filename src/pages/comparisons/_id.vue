@@ -1,44 +1,71 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <q-card>
-      <q-card-section>
-        <div>{{comparison.subject}}</div>
-      </q-card-section>
-    </q-card>
-
-    <q-list bordered>
-      普通はこう考えてしまうけど...
-      <q-separator></q-separator>
-      <!-- 期待 -->
-      <q-item
-        clickable="false"
-        v-for="expectation in comparison.expectations"
-        :key="expectation.id"
-      >
-        <q-item-section>
-          <q-chat-message
-            :text="[expectation.message]"
-            bg-color="indigo-1"
-          />
-        </q-item-section>
-      </q-item>
-      <q-separator></q-separator>
-      実際は...
-      <q-separator></q-separator>
-      <!-- 実際 -->
-      <q-expansion-item
-        v-for="actuality in comparison.actualities"
-        :key="actuality.id"
-        :label="actuality.message"
-        expand-icon-toggle
-      >
+  <q-page class="items-center justify-evenly">
+    <div class="row">
+      <div class="col-12 text-h6">
+        <q-btn
+          flat
+          dense
+          round
+          icon="arrow_back"
+          aria-label="arrow_back"
+          @click="historyBack"
+        />
+        記事詳細
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
         <q-card>
           <q-card-section>
-            {{actuality.detail}}
+            <div class="text-h5">「{{comparison.subject}}」</div>
           </q-card-section>
         </q-card>
-      </q-expansion-item>
-    </q-list>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <q-list bordered>
+          普通はこう考えてしまうけど...
+          <q-separator></q-separator>
+          <!-- 期待 -->
+          <q-item
+            clickable="false"
+            v-for="expectation in comparison.expectations"
+            :key="expectation.id"
+          >
+            <q-item-section>
+              <q-chat-message
+                :text="[expectation.message]"
+                bg-color="indigo-1"
+              />
+            </q-item-section>
+          </q-item>
+          <q-separator></q-separator>
+          実際は...
+          <q-separator></q-separator>
+          <!-- 実際 -->
+          <q-expansion-item
+            v-for="actuality in comparison.actualities"
+            :key="actuality.id"
+            :label="actuality.message"
+            expand-icon-toggle
+          >
+            <q-card>
+              <q-card-section>
+                {{actuality.detail}}
+              </q-card-section>
+            </q-card>
+          </q-expansion-item>
+        </q-list>
+        <q-btn
+          flat
+          @click="tweet"
+        >
+          <q-icon name="fab fa-twitter">
+          </q-icon>
+        </q-btn>
+      </div>
+    </div>
 
   </q-page>
 </template>
@@ -47,6 +74,8 @@
 import { Comparison } from 'components/models';
 import ExampleComponent from 'components/CompositionComponent.vue';
 import { defineComponent, ref } from '@vue/composition-api';
+import VueRouter from 'vue-router';
+import { openURL } from 'quasar';
 
 export default defineComponent({
   name: 'PageIndex',
@@ -88,8 +117,15 @@ export default defineComponent({
         }
       ]
     });
+    const vueRouter = new VueRouter();
+    const historyBack = () => {
+      vueRouter.back();
+    };
+    const tweet = () => {
+      openURL('http://example.com');
+    };
 
-    return { comparison };
+    return { comparison, historyBack, tweet };
   }
 });
 </script>

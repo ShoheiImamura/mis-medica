@@ -1,43 +1,52 @@
 <template>
-  <q-page class="row items-center justify-evenly">
+  <q-page class="items-center justify-evenly">
+    <div class="row">
+      <div class="col-12 col-md-12 col-sm-12 col-lg-12">
+        <div class="text-h6">記事一覧</div>
+        <q-separator></q-separator>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <q-list separator>
+          <q-item
+            clickable
+            v-ripple
+            v-for="comparisonItem  in comparisonListItems"
+            :key=comparisonItem.id
+            :to="'/comparisons/' + comparisonItem.id"
+          >
+            <q-item-section>
+              <q-item-label>「{{comparisonItem.subject}}」</q-item-label>
+              <q-item-label caption>
+                <q-chat-message
+                  avatar="https://1.bp.blogspot.com/-eMLID2dYzwM/VwIgW_nlilI/AAAAAAAA5bY/-osLYuNceb4GArB0E5Cl1D4oYMVDNVKIw/s800/question_head_boy.png"
+                  :text="[comparisonItem.expectationMessage]"
+                  bg-color="indigo-1"
+                />
+              </q-item-label>
+              <q-chat-message
+                text=comparisonItem.expectationMessage
+                sent
+              />
 
-    <q-list separator>
-      <q-item
-        clickable
-        v-ripple
-        v-for="comparisonItem  in comparisonListItems"
-        :key=comparisonItem.id
-        :to="'/comparisons/' + comparisonItem.id"
-      >
-        <q-item-section>
-          <q-item-label>「{{comparisonItem.subject}}」</q-item-label>
-          <q-item-label caption>
-            <q-chat-message
-              avatar="https://1.bp.blogspot.com/-eMLID2dYzwM/VwIgW_nlilI/AAAAAAAA5bY/-osLYuNceb4GArB0E5Cl1D4oYMVDNVKIw/s800/question_head_boy.png"
-              :text="[comparisonItem.expectationMessage]"
-              bg-color="indigo-1"
-            />
-          </q-item-label>
-          <q-chat-message
-            text=comparisonItem.expectationMessage
-            sent
-          />
+            </q-item-section>
+          </q-item>
+        </q-list>
+      </div>
+    </div>
 
-        </q-item-section>
-      </q-item>
-    </q-list>
   </q-page>
 
 </template>
 
 <script lang="ts">
 import { ComparisonListItem, Meta } from 'components/models';
-import ExampleComponent from 'components/CompositionComponent.vue';
 import { defineComponent, ref } from '@vue/composition-api';
 
 export default defineComponent({
   name: 'PageIndex',
-  components: { ExampleComponent },
+  components: {},
   setup() {
     const comparisonListItems = ref<ComparisonListItem[]>([
       {
@@ -61,10 +70,10 @@ export default defineComponent({
         expectationMessage: '期待するメッセージ'
       }
     ]);
-    const meta = ref<Meta>({
-      totalCount: 1200
-    });
-    return { comparisonListItems, meta };
+    // const meta = ref<Meta>({
+    //   totalCount: 1200
+    // });
+    return { comparisonListItems };
   }
 });
 </script>
