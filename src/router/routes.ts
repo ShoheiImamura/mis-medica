@@ -4,8 +4,15 @@ const routes: RouteConfig[] = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
+    children: [{ path: '', component: () => import('pages/Index.vue') }]
+  },
+  // 比較
+  {
+    path: '/comparisons',
+    component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: '', component: () => import('pages/comparisons/index.vue') },
+      { path: ':id', component: () => import('pages/comparisons/_id.vue') }
     ]
   },
 
