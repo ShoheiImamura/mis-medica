@@ -51,8 +51,10 @@ export default defineComponent({
     const comparisonListItems = ref<ComparisonListItem[]>([
       {
         id: 1,
-        subject: '記事タイトル',
-        expectationMessage: '期待するメッセージ'
+        subject:
+          'ワクチン「アナフィラキシー」90%超が女子　日本人初の死亡者も...',
+        expectationMessage:
+          'ワクチン接種したらアナフィラキシーで死んだ人がいるんだな'
       },
       {
         id: 2,

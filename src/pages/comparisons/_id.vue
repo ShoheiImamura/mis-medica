@@ -19,6 +19,7 @@
           <q-card-section>
             <div class="text-h5">「{{comparison.subject}}」</div>
           </q-card-section>
+          <q-chip icon="bookmark">週刊新潮</q-chip>
         </q-card>
       </div>
     </div>
@@ -83,37 +84,27 @@ export default defineComponent({
   setup() {
     const comparison = ref<Comparison>({
       id: 12,
-      subject: '対象記事タイトル',
+      subject: 'ワクチン「アナフィラキシー」90%超が女子　日本人初の死亡者も...',
       citationUrl: 'https://example.com/',
       expectations: [
         {
           id: 1,
-          message:
-            '期待するメッセージ1期待するメッセージ1期待するメッセージ1期待するメッセージ1期待するメッセージ1'
+          message: 'ワクチン接種したらアナフィラキシーで死んだ人がいるんだな'
         },
-        { id: 2, message: '期待するメッセージ2' },
-        { id: 3, message: '期待するメッセージ3' }
+        {
+          id: 2,
+          message:
+            '女子はワクチンを接種するとアナフィラキシーになりやすいんだろうな'
+        }
       ],
       actualities: [
         {
           id: 1,
           message:
-            '実際のことがら実際のことがら実際のことがら実際のことがら実際のことがら',
+            'ワクチン接種後に死亡した方の死因は「くも膜下出血」と推定される',
           detail:
-            '事柄詳細...事柄詳細...事柄詳細...事柄詳細...事柄詳細...事柄詳細...事柄詳細...事柄詳細...事柄詳細...',
-          evidenceUrl: 'https://example.com/'
-        },
-        {
-          id: 2,
-          message: '実際のことがら',
-          detail: '事柄詳細...',
-          evidenceUrl: 'https://example.com/'
-        },
-        {
-          id: 3,
-          message: '実際のことがら',
-          detail: '事柄詳細...',
-          evidenceUrl: 'https://example.com/'
+            '死因として疑われているくも膜下出血は、40～60歳台の方に比較的起こりやすい疾患とされており、今のところ海外における接種事例でも、くも膜下出血と新型コロナワクチンに関連があるとはされていないようである。偶発的な事例かもしれないが、この症例についても更に情報を収集し、今後の審議会で評価していく必要がある。',
+          evidenceUrl: 'https://www.mhlw.go.jp/stf/newpage_17104.html'
         }
       ]
     });
